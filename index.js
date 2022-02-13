@@ -9,13 +9,12 @@ createApp({
     return{
       temp:{},
       products:[],
-      id:[],
     }
   },
   methods:{
-    token(){
+    token(){   //將cookie取出並放入token，藉由token達到自動登入
     var token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    console.log(token);
+    // console.log(token);
     axios.defaults.headers.common['Authorization'] = token;
     },
     checkLogin(){
@@ -35,7 +34,7 @@ createApp({
         // console.log(this.products);
       })
       .catch((err)=>{
-        console.log(err);
+        alert(err.data.message);
       })
     },
     addNewProduct(){
